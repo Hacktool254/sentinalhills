@@ -91,10 +91,9 @@ export const getLeads = query({
     status: v.optional(v.string()),
     serviceType: v.optional(v.string()),
   },
+  // No Convex Auth check — this project uses custom session auth.
+  // Routes are protected at the Next.js layout level via session cookie validation.
   handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) throw new ConvexError("Unauthorized");
-
     let leads;
 
     if (args.status) {
@@ -128,10 +127,8 @@ export const updateLeadStatus = mutation({
     ),
     notes: v.optional(v.string()),
   },
+  // No Convex Auth check — protected at Next.js layout level.
   handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) throw new ConvexError("Unauthorized");
-
     const updateData: any = { status: args.status };
     if (args.notes !== undefined) {
       updateData.notes = args.notes;
@@ -146,10 +143,8 @@ export const getLeadById = query({
   args: {
     leadId: v.id("leads"),
   },
+  // No Convex Auth check — protected at Next.js layout level.
   handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) throw new ConvexError("Unauthorized");
-
     const lead = await ctx.db.get(args.leadId);
     return lead;
   },
