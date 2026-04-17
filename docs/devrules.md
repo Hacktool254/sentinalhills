@@ -151,35 +151,35 @@ Four functions:
 
 ## PHASE 3 — Middleware & Authentication (Prompt 3)
 
-**Goal:** Secure admin session system — no unauthenticated access to `/admin`.
+**Goal:** Secure admin session system — no unauthenticated access to `/admin` (✅ Completed).
 
 ### Files to Create
 
 #### `middleware.ts` (root)
-- Protect `/admin/*` routes via `admin-session` HTTP-only cookie check
-- Edge runtime compatible — no Convex client import
+- [x] Protect `/admin/*` routes via `admin-session` HTTP-only cookie check
+- [x] Edge runtime compatible — no Convex client import
 
 #### `convex/auth.ts`
 Three functions:
-1. `adminLogin` (public action) — rate-limited, bcrypt password compare, return session token
-2. `validateSession` (public query) — hash comparison, return `{ valid: boolean }`
-3. `adminLogout` (mutation) — clear session from DB
+1. [x] `adminLogin` (public action) — rate-limited, bcrypt password compare, return session token
+2. [x] `validateSession` (public query) — hash comparison, return `{ valid: boolean }`
+3. [x] `adminLogout` (mutation) — clear session from DB
 
 #### `app/api/admin/login/route.ts`
-- POST handler, set HTTP-only cookie on success (httpOnly, secure, sameSite: lax, 7-day maxAge)
+- [x] POST handler, set HTTP-only cookie on success (httpOnly, secure, sameSite: lax, 7-day maxAge)
 
 #### `app/api/admin/logout/route.ts`
-- POST handler, clear cookie, redirect to `/admin/login`
+- [x] POST handler, clear cookie, redirect to `/admin/login`
 
 #### `app/(admin)/layout.tsx`
-- Server component, read cookie, validate session, redirect if invalid
+- [x] Server component, read cookie, validate session, redirect if invalid
 
-#### `app/(admin)/admin/login/page.tsx`
-- Client component, simple login form, calls POST `/api/admin/login`
+#### `app/admin/login/page.tsx`
+- [x] Client component, simple login form, calls POST `/api/admin/login`
 
 ### Deliverable
-- Navigating to `/admin` without a session redirects to `/admin/login`
-- Correct credentials → session set → admin visible
+- [x] Navigating to `/admin` without a session redirects to `/admin/login`
+- [x] Correct credentials → session set → admin visible
 - Wrong credentials → same generic error message for both wrong email and wrong password
 
 ---
