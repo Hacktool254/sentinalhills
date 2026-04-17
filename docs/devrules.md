@@ -120,32 +120,32 @@ Before writing a single line of code, confirm:
 
 ## PHASE 2 — Convex Schema & Backend (Prompt 2)
 
-**Goal:** Full Convex backend — schema, mutations, queries, webhook handler.
+**Goal:** Full Convex backend — schema, mutations, queries, webhook handler (✅ Completed).
 
 ### Files to Create
 
 #### `convex/schema.ts`
-- `leads` table — all fields with `v.union`/`v.literal` for enum fields, three indexes
-- `adminUsers` table
-- `rateLimits` table
+- [x] `leads` table — all fields with `v.union`/`v.literal` for enum fields, three indexes
+- [x] `adminUsers` table
+- [x] `rateLimits` table
 
 #### `convex/leads.ts`
 Four functions:
-1. `submitLead` (public mutation) — validate with Zod, rate-limit check, sanitise, save, schedule notification
-2. `getLeads` (admin-only query) — auth check, optional filters, indexed queries, sorted by `_creationTime` desc
-3. `updateLeadStatus` (admin-only mutation) — auth check, validate status literal, update record
-4. `getLeadById` (admin-only query) — auth check, return full lead or null
+1. [x] `submitLead` (public mutation) — validate with Zod, rate-limit check, sanitise, save, schedule notification
+2. [x] `getLeads` (admin-only query) — auth check, optional filters, indexed queries, sorted by `_creationTime` desc
+3. [x] `updateLeadStatus` (admin-only mutation) — auth check, validate status literal, update record
+4. [x] `getLeadById` (admin-only query) — auth check, return full lead or null
 
 #### `convex/http.ts`
-- HTTP action called after lead save
-- Forwards lead data to n8n webhook URL (from env var)
-- Includes `x-webhook-secret` header
-- Handles webhook failure gracefully — does not surface to user
+- [x] HTTP action called after lead save
+- [x] Forwards lead data to n8n webhook URL (from env var)
+- [x] Includes `x-webhook-secret` header
+- [x] Handles webhook failure gracefully — does not surface to user
 
 ### Deliverable
-- Convex dev server running alongside Next.js with no schema errors
-- `submitLead` mutation reachable from Convex dashboard test runner
-- All admin queries return 401 when called without auth
+- [x] Convex dev server running alongside Next.js with no schema errors
+- [x] `submitLead` mutation reachable from Convex dashboard test runner
+- [x] All admin queries return 401 when called without auth
 
 ---
 

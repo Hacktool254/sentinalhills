@@ -48,6 +48,7 @@ export default defineSchema({
   adminUsers: defineTable({
     email: v.string(),
     passwordHash: v.string(),
+    sessionTokenHash: v.optional(v.string()), // Added for Phase 3
     lastLoginAt: v.optional(v.number()),
   }).index("by_email", ["email"]),
 
