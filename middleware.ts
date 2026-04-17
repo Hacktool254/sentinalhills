@@ -2,23 +2,32 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const adminToken = request.cookies.get('admin-session')?.value;
-  const isAdminRoute = request.nextUrl.pathname.startsWith('/admin');
+  try {
+    const { pathname } = request.nextUrl;
+    const adminToken = request.cookies.get('admin-session')?.value;
 
-  // Let the login page pass, but redirect if already authenticated
-  if (isAdminRoute && request.nextUrl.pathname === '/admin/login') {
-    if (adminToken) {
-      return NextResponse.redirect(new URL('/admin', request.url));
+    // 1. If trying to access the login page
+    if (pathname === '/admin/login') {
+      if (adminToken) {
+        // Already logged in, go to dashboard
+        return NextResponse.redirect(new URL('/admin', request.url));
+      }
+      return NextResponse.next();
     }
+
+    // 2. If trying to access any other /admin route
+    if (pathname.startsWith('/admin')) {
+      if (!adminToken) {
+        // Not logged in, go to login
+        return NextResponse.redirect(new URL('/admin/login', request.url));
+      }
+    }
+
+    return NextResponse.next();
+  } catch (error) {
+    console.error('Middleware execution failed:', error);
     return NextResponse.next();
   }
-
-  // Block unauthorized access to any other /admin routes
-  if (isAdminRoute && !adminToken) {
-    return NextResponse.redirect(new URL('/admin/login', request.url));
-  }
-
-  return NextResponse.next();
 }
 
 export const config = {
