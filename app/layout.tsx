@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, Inter, JetBrains_Mono } from "next/font/google";
+import { ConvexClientProvider } from "@/components/providers/ConvexClientProvider";
 import "./globals.css";
 
 const syne = Syne({
@@ -66,7 +67,7 @@ export default function RootLayout({
         className="min-h-full flex flex-col bg-[#0A0A0F] text-[#F0F0FF]"
         suppressHydrationWarning
       >
-        {children}
+        <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>
     </html>
   );

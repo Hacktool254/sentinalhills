@@ -1,0 +1,104 @@
+{
+  "name": "SentinalHills Lead Capture",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "new-lead",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "18f97e7f-ddda-44a3-83ec-1cbba2b83c55",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ],
+      "webhookId": "sentinalhills-new-lead-webhook"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $node[\"Webhook\"].parameter[\"headers\"][\"x-webhook-secret\"] }}",
+              "value2": "s3ntin4lHillsW3bh00kS3cr3t"
+            }
+          ]
+        }
+      },
+      "id": "a918f4a1-0e7d-41a4-9e32-2d93fb42cb80",
+      "name": "Verify Secret",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "phoneNumberId": "your-whatsapp-phone-number-id",
+        "recipientPhoneNumber": "={{ $json[\"body\"][\"phoneNumber\"] }}",
+        "text": "=Hi {{ $json[\"body\"][\"name\"] }}! Thanks for reaching out to SentinalHills. We're currently reviewing your request regarding {{ $json[\"body\"][\"serviceTypeId\"] }} and will get back to you within 4 hours."
+      },
+      "id": "e331bc42-caef-4c6e-bb12-984bb358f278",
+      "name": "Send WhatsApp Reply",
+      "type": "n8n-nodes-base.whatsApp",
+      "typeVersion": 1,
+      "position": [
+        700,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "channel": "sales-leads",
+        "text": "=🚀 *New Lead Captured!*\n*Name*: {{ $json[\"body\"][\"name\"] }}\n*Company*: {{ $json[\"body\"][\"companyName\"] || 'N/A' }}\n*Phone*: {{ $json[\"body\"][\"phoneNumber\"] }}\n*Email*: {{ $json[\"body\"][\"email\"] }}\n*Contact Pref*: {{ $json[\"body\"][\"preferredContact\"] }}",
+        "otherOptions": {}
+      },
+      "id": "f5f5f5f5-f5f5-f5f5-f5f5-f5f5f5f5f5f5",
+      "name": "Notify Team (Slack)",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 1,
+      "position": [
+        700,
+        400
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Verify Secret",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Verify Secret": {
+      "main": [
+        [
+          {
+            "node": "Send WhatsApp Reply",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Notify Team (Slack)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {}
+}

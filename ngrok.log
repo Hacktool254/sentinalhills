@@ -1,0 +1,21 @@
+t=2026-04-17T22:34:01+0300 lvl=info msg="no configuration paths supplied"
+t=2026-04-17T22:34:01+0300 lvl=info msg="using configuration at default config path" path=/home/dalestroy/.config/ngrok/ngrok.yml
+t=2026-04-17T22:34:01+0300 lvl=info msg="open config file" path=/home/dalestroy/.config/ngrok/ngrok.yml err=nil
+t=2026-04-17T22:34:02+0300 lvl=info msg="FIPS 140 mode" enabled=false
+t=2026-04-17T22:34:02+0300 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2026-04-17T22:34:04+0300 lvl=info msg="client session established" obj=tunnels.session
+t=2026-04-17T22:34:04+0300 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2026-04-17T22:34:05+0300 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:5678 url=https://patchwork-wrongly-padlock.ngrok-free.dev
+t=2026-04-17T22:34:21+0300 lvl=info msg=start pg=/api/tunnels id=fe86766cb523aa9b
+t=2026-04-17T22:34:21+0300 lvl=info msg=end pg=/api/tunnels id=fe86766cb523aa9b status=200 dur=1.288778ms
+t=2026-04-17T23:41:19+0300 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=306b0e8cc048 clientid=2ad8ebca1235d3c941c013fcb073746e
+t=2026-04-17T23:41:19+0300 lvl=eror msg="session closed, starting reconnect loop" obj=tunnels.session obj=csess id=cbbd0257fa0e err="session closed"
+t=2026-04-17T23:41:50+0300 lvl=eror msg="heartbeat timeout, terminating session" obj=tunnels.session obj=csess id=b1e8b3be2230
+t=2026-04-17T23:41:51+0300 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to send authentication request: session closed"
+t=2026-04-17T23:42:01+0300 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.ngrok-agent.com:443\": dial tcp: lookup connect.ngrok-agent.com: i/o timeout"
+t=2026-04-17T23:42:12+0300 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.ngrok-agent.com:443\": dial tcp: lookup connect.ngrok-agent.com on 10.255.255.254:53: read udp 10.255.255.254:29846->10.255.255.254:53: i/o timeout"
+t=2026-04-17T23:42:24+0300 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.ngrok-agent.com:443\": dial tcp: lookup connect.ngrok-agent.com: i/o timeout"
+t=2026-04-17T23:42:38+0300 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.ngrok-agent.com:443\": dial tcp 13.127.105.236:443: i/o timeout"
+t=2026-04-17T23:42:56+0300 lvl=eror msg="failed to reconnect session" obj=tunnels.session err="failed to dial ngrok server with address \"connect.ngrok-agent.com:443\": dial tcp: lookup connect.ngrok-agent.com: i/o timeout"
+t=2026-04-17T23:43:14+0300 lvl=info msg="client session established" obj=tunnels.session
+t=2026-04-17T23:43:14+0300 lvl=info msg="tunnel session started" obj=tunnels.session
