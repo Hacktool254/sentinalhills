@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import { SITE_CONFIG } from '@/lib/constants';
+import { generatePageMetadata } from '@/lib/metadata';
 import { LeadForm } from '@/components/forms/LeadForm';
 
-export const metadata: Metadata = {
-  title: `Contact Us | ${SITE_CONFIG.name}`,
+export const metadata = generatePageMetadata({
+  title: 'Start a project',
   description: 'Book a free automation audit with SentinalHills. Stop losing leads and start closing more deals today.',
-};
+  path: '/contact',
+});
 
 export default function ContactPage() {
   return (
