@@ -480,6 +480,7 @@ Deferred features — do not build until Phase 1 is live:
 - Calendly iframe embed on Contact page
 - Email automation via Resend
 - Swahili language toggle
+- **n8n Workflow Integrations (WhatsApp, Slack, Resend):** Use the [Atom8n](https://www.atom8n.com/) VS Code extension to manage, build, and version-control `.n8n` workflow files directly in the IDE natively.
 
 ## PHASE 3 ROADMAP (Scale — Month 4+)
 
