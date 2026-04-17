@@ -99,11 +99,13 @@ export const getLeads = query({
     if (args.status) {
       leads = await ctx.db
         .query("leads")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .withIndex("by_status", (q) => q.eq("status", args.status as any))
         .collect();
     } else if (args.serviceType) {
       leads = await ctx.db
         .query("leads")
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .withIndex("by_service", (q) => q.eq("serviceType", args.serviceType as any))
         .collect();
     } else {
@@ -129,6 +131,7 @@ export const updateLeadStatus = mutation({
   },
   // No Convex Auth check — protected at Next.js layout level.
   handler: async (ctx, args) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const updateData: any = { status: args.status };
     if (args.notes !== undefined) {
       updateData.notes = args.notes;

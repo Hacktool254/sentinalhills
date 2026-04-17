@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     response.cookies.delete('admin-session');
     
     return response;
-  } catch (error) {
+  } catch {
     const response = NextResponse.redirect(new URL('/admin/login', request.url));
     response.cookies.delete('admin-session');
     return response;

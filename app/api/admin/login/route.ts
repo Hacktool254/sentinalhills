@@ -32,8 +32,9 @@ export async function POST(request: Request) {
     }
     
     return NextResponse.json({ success: false, error: "Invalid credentials" }, { status: 401 });
-  } catch (error: any) {
-    const errorMessage = error.message && error.message.includes("Too many attempts") 
+  } catch (error: unknown) {
+    const errorMsg = error instanceof Error ? error.message : "";
+    const errorMessage = errorMsg.includes("Too many attempts") 
       ? "Too many attempts. Try again in 15 minutes." 
       : "Invalid credentials";
       

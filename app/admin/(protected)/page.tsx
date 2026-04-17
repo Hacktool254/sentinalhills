@@ -20,12 +20,13 @@ const SERVICE_LABELS: Record<string, string> = {
 };
 
 export default async function AdminDashboard() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let leads: any[] = [];
   let fetchError = false;
 
   try {
     leads = await convex.query(api.leads.getLeads, {});
-  } catch (e) {
+  } catch {
     fetchError = true;
   }
 
