@@ -66,13 +66,13 @@ These rules are non-negotiable and must be followed across every file written in
 
 Before writing a single line of code, confirm:
 
-- [ ] Convex account created at convex.dev
-- [ ] Node.js 20+ installed
-- [ ] Git repository initialised
-- [ ] Custom domain purchased (sentinalhills.com) — or placeholder confirmed
-- [ ] WhatsApp number confirmed for `NEXT_PUBLIC_WHATSAPP_NUMBER`
-- [ ] n8n instance URL ready (or deferred to Phase 2)
-- [ ] Resend account created (or deferred to Phase 2)
+- [x] Convex account created at convex.dev
+- [x] Node.js 20+ installed (v24.14.1)
+- [x] Git repository initialised and pushed to github.com/Hacktool254/sentinalhills
+- [x] Custom domain purchased (sentinalhills.com) — confirmed
+- [x] WhatsApp number confirmed: `+14193229820`
+- [x] n8n instance URL — deferred to Phase 2
+- [x] Resend account — deferred to Phase 2
 
 ---
 
@@ -81,29 +81,29 @@ Before writing a single line of code, confirm:
 **Goal:** Bare project skeleton — no page content, only infrastructure.
 
 ### Steps
-1. Create a new Next.js 14 project:
+1. [x] Create a new Next.js 14 project:
    ```bash
    npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=false --import-alias="@/*"
    ```
-2. Install all required production dependencies:
+2. [x] Install all required production dependencies:
    ```bash
    npm install convex framer-motion lucide-react zod resend clsx tailwind-merge
    ```
-3. Configure `tailwind.config.ts`:
+3. [x] Configure `tailwind.config.ts`:
    - Custom colours as CSS variable references (e.g. `var(--color-accent-primary)`)
    - Font variables: `--font-syne`, `--font-inter`, `--font-mono`
    - Extended border radius: `card: '16px'`, `btn: '8px'`
-4. Create `app/globals.css` with ALL CSS custom properties on `:root`:
+4. [x] Create `app/globals.css` with ALL CSS custom properties on `:root`:
    - Full colour system from `design.md` Section 2
    - Font family declarations
    - Base spacing/reset rules
-5. Configure `next.config.js`:
+5. [x] Configure `next.config.js`:
    - Security headers (X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, CSP)
    - TypeScript strict mode confirmed in `tsconfig.json`
-6. Create `.env.example` (committed) with all required variable names — no values
-7. Update `.gitignore` to include `.env.local`
-8. Initialise Convex: `npx convex dev` (follow prompts, link to your Convex project)
-9. Create the full folder structure:
+6. [x] Create `.env.example` (committed) with all required variable names — no values
+7. [x] Update `.gitignore` to include `.env.local`
+8. [x] Initialise Convex: `npx convex dev` (follow prompts, link to your Convex project)
+9. [x] Create the full folder structure:
    ```
    app/(public)/   app/(admin)/   app/api/
    components/ui/  components/layout/  components/sections/
